@@ -277,3 +277,35 @@ for(p=list.head;p;p=q)
 ```
 ## 六、不熟悉的c语言函数
 - atoi()函数：把字符串转换成整型数的函数。
+## 七、三目运算符
+```c
+a = t < 25 ? 0 : 1 ;
+/*t<25则a=0  t>=25则a=1*/
+```
+## 八、EOF和~
+- EOF在C标准函数库中表示 文件结束符(end of file) ，在while循环中 以EOF为文件结束标志。在命令行中输入Ctrl+z可以结束输入。
+```c
+int a,b;  
+	while(scanf("%d%d",&a,&b)!=EOF)
+	{   
+		printf("%d\n",a+b);  
+	}  return 0; 
+```
+- ~是取反的意思，scanf的返回值代表正确按指定格式输入变量的个 数,即取值范围是大于等于-1的。EOF的值为-1，当读入为EOF时，取反之后为0(涉及到计算机补码)，从而跳出while循环。而其他输入情 况下，while循环非0。
+```c
+int a,b;  
+	while(~scanf("%d%d",&a,&b))
+	{   
+	printf("%d\n",a+b);  
+	} //键盘键入Ctrl+z结束 
+	return 0;
+```
+
+### 容易遗忘的小细节
+- switch 的对象只能是 int char bool 
+- double类型的a与int类型的b比较的话会有坑
+```c
+/*解决方法*/
+const double eps = 1e-8;
+a - b > eps;//表示a>b
+```
